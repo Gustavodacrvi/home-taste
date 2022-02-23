@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/dist/output.css" rel="stylesheet">
+
+  <script src="https://unpkg.com/petite-vue" defer init></script>
+</head>
+<body>
+
+  <main class="max-w-7xl m-auto px-2">
+    <nav
+      v-scope="{ sidebar: false }"
+
+    >
+      <div class="py-6 flex justify-between items-center">
+        <img class="hidden sm:block" src="/dist/assets/logo.svg" width="100" height="70">
+        <img class="block sm:hidden" src="/dist/assets/logo.svg" width="70" height="40">
+  
+        <div class="flex">
+          <div class="relative group hidden sm:block">
+            <span class="bg-primary rounded-xl text-white p-3 font-semibold flex items-center cursor-pointer">
+              <svg class="mr-3" width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.5 0L11 7.5L18.5 0L21.5 1.5L11 12L0.5 1.5L3.5 0Z" fill="white"/>
+              </svg>
+              
+              Samenwerken
+            </span>
+            
+            <ul class="absolute top-0 p-1 rounded-lg left-0 top-full bg-white shadow min-w-full opacity-0 -mt-2 duration-150 group-hover:opacity-100 group-hover:mt-0">
+              <li class="flex p-2 py-1 text-primary font-bold flex items-center cursor-pointer">
+                <img class="mr-2" width="30" height="30" src="/dist/assets/icons/motorcycle.svg">
+                
+                Bezorgers
+              </li>
+              <li class="flex p-2 py-1.5 text-primary font-bold flex items-center cursor-pointer">
+                <img class="mr-2" width="30" height="30" src="/dist/assets/icons/lunch.svg">
+                
+                Restaurants
+              </li>
+              <li class="flex p-2 py-1.5 text-primary font-bold flex items-center cursor-pointer">
+                <img class="mr-2" width="30" height="30" src="/dist/assets/icons/person.svg">
+                  
+                Werken bij
+              </li>
+            </ul>
+          </div>
+          <div class="flex justify-center items-center sm:px-5">
+            <svg class="cursor-pointer" width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg" @click="sidebar = true">
+              <path d="M6.25 20.5H26.25V17.1667H6.25V20.5ZM-3.75 12.1667H26.25V8.83333H-3.75V12.1667ZM6.25 3.83333H26.25V0.5H6.25V3.83333Z" fill="#FFAD00"/>
+            </svg>
+          </div>
+        </div>
+  
+      </div>
+
+      <div
+        class="fixed top-0 right-0 w-72 shadow bg-white h-full duration-150 translate-x-full"
+        :class="[
+          !sidebar ? '!translate-x-full' : '!translate-x-0',
+        ]"
+      >
+        asht asht 
+      </div>
+    </nav>
+  </main>
+  
+</body>
+</html>
