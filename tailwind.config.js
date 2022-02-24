@@ -8,6 +8,7 @@ module.exports = {
 
       'black': "#000",
       'gray-border': "#DDDDDE",
+      'gray-background': "#EEEDED",
       "darked-background": "rgba(0, 0, 0, 0.6)",
     },
     fontFamily: {
