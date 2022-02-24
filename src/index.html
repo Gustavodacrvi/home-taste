@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="dist/output.css" rel="stylesheet">
+  <link href="assets/main.css" rel="stylesheet">
 
-  <script src="https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.iife.js" defer init></script>
 </head>
 <body>
 
@@ -13,8 +12,8 @@
     v-scope="{ sidebar: false }"
   >
     <div class="py-6 flex justify-between items-center">
-      <img class="hidden sm:block" src="dist/assets/logo.svg" width="100" height="70">
-      <img class="block sm:hidden" src="dist/assets/logo.svg" width="70" height="40">
+      <img class="hidden sm:block" src="assets/logo.svg" width="100" height="70">
+      <img class="block sm:hidden" src="assets/logo.svg" width="70" height="40">
 
       <div class="flex">
         <div class="relative group hidden sm:block">
@@ -28,17 +27,17 @@
           
           <ul class="absolute top-0 p-1 rounded-lg left-0 top-full bg-white shadow min-w-full opacity-0 -mt-2 duration-150 group-hover:opacity-100 group-hover:mt-0">
             <li class="flex p-2 py-1 text-primary font-bold flex items-center cursor-pointer">
-              <img class="mr-2" width="30" height="30" src="dist/assets/icons/motorcycle.svg">
+              <img class="mr-2" width="30" height="30" src="assets/icons/motorcycle.svg">
               
               Bezorgers
             </li>
             <li class="flex p-2 py-1.5 text-primary font-bold flex items-center cursor-pointer">
-              <img class="mr-2" width="30" height="30" src="dist/assets/icons/lunch.svg">
+              <img class="mr-2" width="30" height="30" src="assets/icons/lunch.svg">
               
               Restaurants
             </li>
             <li class="flex p-2 py-1.5 text-primary font-bold flex items-center cursor-pointer">
-              <img class="mr-2" width="30" height="30" src="dist/assets/icons/person.svg">
+              <img class="mr-2" width="30" height="30" src="assets/icons/person.svg">
                 
               Werken bij
             </li>
@@ -54,22 +53,22 @@
     </div>
 
     <div
-      class="fixed w-full h-full bg-darked-background left-0 top-0 opacity-0 duration-150 z-40"
+      class="fixed w-full h-full bg-darked-background left-0 top-0 opacity-0 duration-150 ease-in-out z-40"
       :class="sidebar ? '!opacity-100 visible' : '!opacity-0 invisible'"
 
       @click="sidebar = false"
     ></div>
     <div
-      class="fixed top-0 right-0 w-72 shadow bg-white h-full duration-150 translate-x-full px-3 py-6 z-50"
+      class="fixed overflow-auto top-0 right-0 w-72 shadow bg-white h-full duration-150 translate-x-full px-3 py-6 z-50"
       :class="[
         sidebar ? '!translate-x-0' : '!translate-x-full',
       ]"
     >
-      <img class="absolute right-0 opacity-10 sidebar-lunch-background" width="700" height="578" src="dist/assets/icons/sidebar-background.png">
-      <img class="absolute right-0 cursor-pointer mr-4" width="20" height="20" src="dist/assets/icons/close.svg" @click="sidebar = false">
+      <img class="absolute right-0 opacity-10 sidebar-lunch-background" width="700" height="578" src="assets/icons/sidebar-background.png">
+      <img class="absolute right-0 cursor-pointer mr-4" width="20" height="20" src="assets/icons/close.svg" @click="sidebar = false">
       
       <div class="flex items-center">
-        <img class="ml-0.5" src="dist/assets/icons/user.svg" width="58" height="58">
+        <img class="ml-0.5" src="assets/icons/user.svg" width="58" height="58">
         <h4 class="font-bold ml-3">Inloggen</h4>
       </div>
 
@@ -77,7 +76,7 @@
         <li class="cursor-pointer">
           <a class="flex items-center" href="#">
             <span class="w-[4.35em] block">
-              <img class="ml-5" width="23" height="23" src="dist/assets/icons/user-pen.svg">
+              <img class="ml-5" width="23" height="23" src="assets/icons/user-pen.svg">
             </span>
             
             Registreren
@@ -86,7 +85,7 @@
         <li class="cursor-pointer">
           <a class="flex items-center" href="#">
             <span class="w-[4.35em] block">
-              <img class="ml-5" width="23" height="23" src="dist/assets/icons/shopping-bag.svg">
+              <img class="ml-5" width="23" height="23" src="assets/icons/shopping-bag.svg">
             </span>
             
             Bestellingen
@@ -95,7 +94,7 @@
         <li class="cursor-pointer">
           <a class="flex items-center" href="#">
             <span class="w-[4.35em] block">
-              <img class="ml-5" width="20" height="20" src="dist/assets/icons/user-notes.svg">
+              <img class="ml-5" width="20" height="20" src="assets/icons/user-notes.svg">
             </span>
             
             Adressen
@@ -104,7 +103,7 @@
         <li class="cursor-pointer">
           <a class="flex items-center" href="#">
             <span class="w-[4.35em] block">
-              <img class="ml-5" width="23" height="23" src="dist/assets/icons/ticket.svg">
+              <img class="ml-5" width="23" height="23" src="assets/icons/ticket.svg">
             </span>
             
             Promos
@@ -113,7 +112,7 @@
         <li class="cursor-pointer">
           <a class="flex items-center" href="#">
             <span class="w-[4.35em] block">
-              <img class="ml-4" width="32" height="32" src="dist/assets/icons/fine-lunch.svg">
+              <img class="ml-4" width="32" height="32" src="assets/icons/fine-lunch.svg">
             </span>
             
             Fine Dining
@@ -122,7 +121,7 @@
         <li class="cursor-pointer">
           <a class="flex items-center" href="#">
             <span class="w-[4.35em] block">
-              <img class="ml-5" width="23" height="23" src="dist/assets/icons/chef-hat.svg">
+              <img class="ml-5" width="23" height="23" src="assets/icons/chef-hat.svg">
             </span>
             
             Chefkok
@@ -131,7 +130,7 @@
         <li class="cursor-pointer">
           <a class="flex items-center" href="#">
             <span class="w-[4.35em] block">
-              <img class="ml-5" width="23" height="23" src="dist/assets/icons/exit-door.svg">
+              <img class="ml-5" width="23" height="23" src="assets/icons/exit-door.svg">
             </span>
 
             Uitloggen
@@ -145,7 +144,7 @@
         <li class="cursor-pointer">
           <a class="flex items-center" href="#">
             <span class="w-[4.35em] block">
-              <img class="ml-5" width="23" height="23" src="dist/assets/icons/lunch-location.svg">
+              <img class="ml-5" width="23" height="23" src="assets/icons/lunch-location.svg">
             </span>
             
             Over ons
@@ -154,7 +153,7 @@
         <li class="cursor-pointer">
           <a class="flex items-center" href="#">
             <span class="w-[4.35em] block">
-              <img class="ml-5" width="23" height="23" src="dist/assets/icons/mail.svg">
+              <img class="ml-5" width="23" height="23" src="assets/icons/mail.svg">
             </span>
             
             Contact
@@ -163,7 +162,7 @@
         <li class="cursor-pointer">
           <a class="flex items-center" href="#">
             <span class="w-[4.3em] block">
-              <img class="ml-5" width="26" height="26" src="dist/assets/icons/motorcycle.svg">
+              <img class="ml-5" width="26" height="26" src="assets/icons/motorcycle.svg">
             </span>
             
             Word Bezorger
@@ -172,7 +171,7 @@
         <li class="cursor-pointer">
           <a class="flex items-center" href="#">
             <span class="w-[4.35em] block">
-              <img class="ml-5" width="23" height="23" src="dist/assets/icons/lunch-knife-garf.svg">
+              <img class="ml-5" width="23" height="23" src="assets/icons/lunch-knife-garf.svg">
             </span>
             
             Aanmelden Restaurant
@@ -192,17 +191,19 @@
 
     <div class="px-3.5 md:mx-auto w-full md:w-[43.5em] mt-4">
       <div class="relative">
-        <input class="bg-white rounded-2xl p-5 w-full pl-12 pr-24 border-box border border-gray-border"
-    
+        <input
+          class="bg-white rounded-2xl p-5 w-full pl-14 text-lg pr-24 border-box border border-gray-border"
+          placeholder="Straatnaam/postcode + huisnr."
         >
   
-        <img class="absolute top-1/2 -translate-y-1/2 ml-3" width="32" height="32" src="dist/assets/icons/location.svg">
+        <img class="absolute top-1/2 -translate-y-1/2 ml-3" width="32" height="32" src="assets/icons/location.svg">
         <button class="rounded-2xl font-bold bg-green text-white text-lg px-6 absolute right-0 h-full">
           Zoek
         </button>
       </div>
     </div>
   </header>
-  
+
+  <script src="bundle.js"></script>
 </body>
 </html>

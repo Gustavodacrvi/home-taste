@@ -1,17 +1,16 @@
 {
-  "name": "asht",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-
-    "dev": "npx tailwindcss -i ./input.css -o ./dist/output.css --watch",
-    "build": "npx tailwindcss -o ./dist/output.css --minify"
-  },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "rollup": "^2.68.0",
     "tailwindcss": "^3.0.23"
+  },
+  "scripts": {
+    "dev:css": "npx tailwindcss -i ./src/assets/main.css -o ./dist/assets/main.css --watch",
+    "build:css": "postcss src/assets/main.css -o dist/assets/main.css",
+    "copy_and_paste": "rm -rf dist & mkdir dist & cp src/index.html dist/index.html & cp -r src/assets dist/assets",
+    "build": "npm run copy_and_paste & rollup --config & npm run build:css"
+  },
+  "dependencies": {
+    "postcss-cli": "^9.1.0"
   }
 }
