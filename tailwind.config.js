@@ -5,6 +5,7 @@ module.exports = {
       primary: "#FFAD00",
       green: "#00A78D",
       white: '#ffffff',
+      'gray-border': "#DDDDDE",
       "darked-background": "rgba(0, 0, 0, 0.6)",
     },
     fontFamily: {

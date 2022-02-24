@@ -9,181 +9,200 @@
 </head>
 <body>
 
-  <main class="max-w-7xl m-auto px-2">
-    <nav
-      v-scope="{ sidebar: false }"
+  <nav class="max-w-7xl m-auto px-4 bg-purple"
+    v-scope="{ sidebar: false }"
+  >
+    <div class="py-6 flex justify-between items-center">
+      <img class="hidden sm:block" src="dist/assets/logo.svg" width="100" height="70">
+      <img class="block sm:hidden" src="dist/assets/logo.svg" width="70" height="40">
 
-    >
-      <div class="py-6 flex justify-between items-center">
-        <img class="hidden sm:block" src="dist/assets/logo.svg" width="100" height="70">
-        <img class="block sm:hidden" src="dist/assets/logo.svg" width="70" height="40">
-  
-        <div class="flex">
-          <div class="relative group hidden sm:block">
-            <span class="bg-primary rounded-xl text-white p-3 font-semibold flex items-center cursor-pointer">
-              <svg class="mr-3" width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3.5 0L11 7.5L18.5 0L21.5 1.5L11 12L0.5 1.5L3.5 0Z" fill="white"/>
-              </svg>
+      <div class="flex">
+        <div class="relative group hidden sm:block">
+          <span class="bg-primary rounded-xl text-white p-3 font-semibold flex items-center cursor-pointer">
+            <svg class="mr-3" width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.5 0L11 7.5L18.5 0L21.5 1.5L11 12L0.5 1.5L3.5 0Z" fill="white"/>
+            </svg>
+            
+            Samenwerken
+          </span>
+          
+          <ul class="absolute top-0 p-1 rounded-lg left-0 top-full bg-white shadow min-w-full opacity-0 -mt-2 duration-150 group-hover:opacity-100 group-hover:mt-0">
+            <li class="flex p-2 py-1 text-primary font-bold flex items-center cursor-pointer">
+              <img class="mr-2" width="30" height="30" src="dist/assets/icons/motorcycle.svg">
               
-              Samenwerken
+              Bezorgers
+            </li>
+            <li class="flex p-2 py-1.5 text-primary font-bold flex items-center cursor-pointer">
+              <img class="mr-2" width="30" height="30" src="dist/assets/icons/lunch.svg">
+              
+              Restaurants
+            </li>
+            <li class="flex p-2 py-1.5 text-primary font-bold flex items-center cursor-pointer">
+              <img class="mr-2" width="30" height="30" src="dist/assets/icons/person.svg">
+                
+              Werken bij
+            </li>
+          </ul>
+        </div>
+        <div class="flex justify-center items-center sm:px-5">
+          <svg class="cursor-pointer" width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg" @click="sidebar = true">
+            <path d="M6.25 20.5H26.25V17.1667H6.25V20.5ZM-3.75 12.1667H26.25V8.83333H-3.75V12.1667ZM6.25 3.83333H26.25V0.5H6.25V3.83333Z" fill="#FFAD00"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+    <div
+      class="fixed w-full h-full bg-darked-background left-0 top-0 opacity-0 duration-150 z-40"
+      :class="sidebar ? '!opacity-100 visible' : '!opacity-0 invisible'"
+
+      @click="sidebar = false"
+    ></div>
+    <div
+      class="fixed top-0 right-0 w-72 shadow bg-white h-full duration-150 translate-x-full px-3 py-6 z-50"
+      :class="[
+        sidebar ? '!translate-x-0' : '!translate-x-full',
+      ]"
+    >
+      <img class="absolute right-0 opacity-10 sidebar-lunch-background" width="700" height="578" src="dist/assets/icons/sidebar-background.png">
+      <img class="absolute right-0 cursor-pointer mr-4" width="20" height="20" src="dist/assets/icons/close.svg" @click="sidebar = false">
+      
+      <div class="flex items-center">
+        <img class="ml-0.5" src="dist/assets/icons/user.svg" width="58" height="58">
+        <h4 class="font-bold ml-3">Inloggen</h4>
+      </div>
+
+      <ul class="space-y-4 mt-4">
+        <li class="cursor-pointer">
+          <a class="flex items-center" href="#">
+            <span class="w-[4.35em] block">
+              <img class="ml-5" width="23" height="23" src="dist/assets/icons/user-pen.svg">
             </span>
             
-            <ul class="absolute top-0 p-1 rounded-lg left-0 top-full bg-white shadow min-w-full opacity-0 -mt-2 duration-150 group-hover:opacity-100 group-hover:mt-0">
-              <li class="flex p-2 py-1 text-primary font-bold flex items-center cursor-pointer">
-                <img class="mr-2" width="30" height="30" src="dist/assets/icons/motorcycle.svg">
-                
-                Bezorgers
-              </li>
-              <li class="flex p-2 py-1.5 text-primary font-bold flex items-center cursor-pointer">
-                <img class="mr-2" width="30" height="30" src="dist/assets/icons/lunch.svg">
-                
-                Restaurants
-              </li>
-              <li class="flex p-2 py-1.5 text-primary font-bold flex items-center cursor-pointer">
-                <img class="mr-2" width="30" height="30" src="dist/assets/icons/person.svg">
-                  
-                Werken bij
-              </li>
-            </ul>
-          </div>
-          <div class="flex justify-center items-center sm:px-5">
-            <svg class="cursor-pointer" width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg" @click="sidebar = true">
-              <path d="M6.25 20.5H26.25V17.1667H6.25V20.5ZM-3.75 12.1667H26.25V8.83333H-3.75V12.1667ZM6.25 3.83333H26.25V0.5H6.25V3.83333Z" fill="#FFAD00"/>
-            </svg>
-          </div>
-        </div>
+            Registreren
+          </a>
+        </li>
+        <li class="cursor-pointer">
+          <a class="flex items-center" href="#">
+            <span class="w-[4.35em] block">
+              <img class="ml-5" width="23" height="23" src="dist/assets/icons/shopping-bag.svg">
+            </span>
+            
+            Bestellingen
+          </a>
+        </li>
+        <li class="cursor-pointer">
+          <a class="flex items-center" href="#">
+            <span class="w-[4.35em] block">
+              <img class="ml-5" width="20" height="20" src="dist/assets/icons/user-notes.svg">
+            </span>
+            
+            Adressen
+          </a>
+        </li>
+        <li class="cursor-pointer">
+          <a class="flex items-center" href="#">
+            <span class="w-[4.35em] block">
+              <img class="ml-5" width="23" height="23" src="dist/assets/icons/ticket.svg">
+            </span>
+            
+            Promos
+          </a>
+        </li>
+        <li class="cursor-pointer">
+          <a class="flex items-center" href="#">
+            <span class="w-[4.35em] block">
+              <img class="ml-4" width="32" height="32" src="dist/assets/icons/fine-lunch.svg">
+            </span>
+            
+            Fine Dining
+          </a>
+        </li>
+        <li class="cursor-pointer">
+          <a class="flex items-center" href="#">
+            <span class="w-[4.35em] block">
+              <img class="ml-5" width="23" height="23" src="dist/assets/icons/chef-hat.svg">
+            </span>
+            
+            Chefkok
+          </a>
+        </li>
+        <li class="cursor-pointer">
+          <a class="flex items-center" href="#">
+            <span class="w-[4.35em] block">
+              <img class="ml-5" width="23" height="23" src="dist/assets/icons/exit-door.svg">
+            </span>
+
+            Uitloggen
+          </a>
+        </li>
+      </ul>
+      
+      <div class="border-t border-primary my-5"></div>
+
+      <ul class="space-y-4 mt-4">
+        <li class="cursor-pointer">
+          <a class="flex items-center" href="#">
+            <span class="w-[4.35em] block">
+              <img class="ml-5" width="23" height="23" src="dist/assets/icons/lunch-location.svg">
+            </span>
+            
+            Over ons
+          </a>
+        </li>
+        <li class="cursor-pointer">
+          <a class="flex items-center" href="#">
+            <span class="w-[4.35em] block">
+              <img class="ml-5" width="23" height="23" src="dist/assets/icons/mail.svg">
+            </span>
+            
+            Contact
+          </a>
+        </li>
+        <li class="cursor-pointer">
+          <a class="flex items-center" href="#">
+            <span class="w-[4.3em] block">
+              <img class="ml-5" width="26" height="26" src="dist/assets/icons/motorcycle.svg">
+            </span>
+            
+            Word Bezorger
+          </a>
+        </li>
+        <li class="cursor-pointer">
+          <a class="flex items-center" href="#">
+            <span class="w-[4.35em] block">
+              <img class="ml-5" width="23" height="23" src="dist/assets/icons/lunch-knife-garf.svg">
+            </span>
+            
+            Aanmelden Restaurant
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="bg-primary py-4 md:py-14 rounded-b-3xl md:rounded-none">
+    <h1 class="text-3xl sm:text-5xl md:text-6xl text-center font-bold text-white">
+      Een smaakvolle beleving
+    </h1>
+    <h2 class="text-white text-center text-lg sm:text-2xl mt-1.5">
+      Vind restaurants bij jou in de buurt
+    </h2>
+
+    <div class="px-3.5 md:mx-auto w-full md:w-[43.5em] mt-4">
+      <div class="relative">
+        <input class="bg-white rounded-2xl p-5 w-full pl-12 pr-24 border-box border border-gray-border"
+    
+        >
   
+        <img class="absolute top-1/2 -translate-y-1/2 ml-3" width="32" height="32" src="dist/assets/icons/location.svg">
+        <button class="rounded-2xl font-bold bg-green text-white text-lg px-6 absolute right-0 h-full">
+          Zoek
+        </button>
       </div>
-
-      <div
-        class="fixed w-full h-full bg-darked-background left-0 top-0 opacity-0 duration-150"
-        :class="sidebar ? '!opacity-100 visible' : '!opacity-0 invisible'"
-
-        @click="sidebar = false"
-      ></div>
-      <div
-        class="fixed top-0 right-0 w-72 shadow bg-white h-full duration-150 translate-x-full px-3 py-6"
-        :class="[
-          sidebar ? '!translate-x-0' : '!translate-x-full',
-        ]"
-      >
-        <img class="absolute right-0 opacity-10 sidebar-lunch-background" width="700" height="578" src="dist/assets/icons/sidebar-background.png">
-        <img class="absolute right-0 cursor-pointer mr-4" width="20" height="20" src="dist/assets/icons/close.svg" @click="sidebar = false">
-        
-        <div class="flex items-center">
-          <img class="ml-0.5" src="dist/assets/icons/user.svg" width="58" height="58">
-          <h4 class="font-bold ml-3">Inloggen</h4>
-        </div>
-
-        <ul class="space-y-4 mt-4">
-          <li class="cursor-pointer">
-            <a class="flex items-center" href="#">
-              <span class="w-[4.35em] block">
-                <img class="ml-5" width="23" height="23" src="dist/assets/icons/user-pen.svg">
-              </span>
-              
-              Registreren
-            </a>
-          </li>
-          <li class="cursor-pointer">
-            <a class="flex items-center" href="#">
-              <span class="w-[4.35em] block">
-                <img class="ml-5" width="23" height="23" src="dist/assets/icons/shopping-bag.svg">
-              </span>
-              
-              Bestellingen
-            </a>
-          </li>
-          <li class="cursor-pointer">
-            <a class="flex items-center" href="#">
-              <span class="w-[4.35em] block">
-                <img class="ml-5" width="20" height="20" src="dist/assets/icons/user-notes.svg">
-              </span>
-              
-              Adressen
-            </a>
-          </li>
-          <li class="cursor-pointer">
-            <a class="flex items-center" href="#">
-              <span class="w-[4.35em] block">
-                <img class="ml-5" width="23" height="23" src="dist/assets/icons/ticket.svg">
-              </span>
-              
-              Promos
-            </a>
-          </li>
-          <li class="cursor-pointer">
-            <a class="flex items-center" href="#">
-              <span class="w-[4.35em] block">
-                <img class="ml-4" width="32" height="32" src="dist/assets/icons/fine-lunch.svg">
-              </span>
-              
-              Fine Dining
-            </a>
-          </li>
-          <li class="cursor-pointer">
-            <a class="flex items-center" href="#">
-              <span class="w-[4.35em] block">
-                <img class="ml-5" width="23" height="23" src="dist/assets/icons/chef-hat.svg">
-              </span>
-              
-              Chefkok
-            </a>
-          </li>
-          <li class="cursor-pointer">
-            <a class="flex items-center" href="#">
-              <span class="w-[4.35em] block">
-                <img class="ml-5" width="23" height="23" src="dist/assets/icons/exit-door.svg">
-              </span>
-  
-              Uitloggen
-            </a>
-          </li>
-        </ul>
-        
-        <div class="border-t border-primary my-5"></div>
-
-        <ul class="space-y-4 mt-4">
-          <li class="cursor-pointer">
-            <a class="flex items-center" href="#">
-              <span class="w-[4.35em] block">
-                <img class="ml-5" width="23" height="23" src="dist/assets/icons/lunch-location.svg">
-              </span>
-              
-              Over ons
-            </a>
-          </li>
-          <li class="cursor-pointer">
-            <a class="flex items-center" href="#">
-              <span class="w-[4.35em] block">
-                <img class="ml-5" width="23" height="23" src="dist/assets/icons/mail.svg">
-              </span>
-              
-              Contact
-            </a>
-          </li>
-          <li class="cursor-pointer">
-            <a class="flex items-center" href="#">
-              <span class="w-[4.3em] block">
-                <img class="ml-5" width="26" height="26" src="dist/assets/icons/motorcycle.svg">
-              </span>
-              
-              Word Bezorger
-            </a>
-          </li>
-          <li class="cursor-pointer">
-            <a class="flex items-center" href="#">
-              <span class="w-[4.35em] block">
-                <img class="ml-5" width="23" height="23" src="dist/assets/icons/lunch-knife-garf.svg">
-              </span>
-              
-              Aanmelden Restaurant
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </main>
+    </div>
+  </header>
   
 </body>
 </html>
