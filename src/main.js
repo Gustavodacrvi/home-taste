@@ -2,7 +2,7 @@
 
 
 
-import { createApp } from './assets/petite-vue.module'
+const { createApp } = PetiteVue
 
 createApp().mount("nav")
 
