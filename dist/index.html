@@ -433,7 +433,7 @@
     </div>
 
     <!-- carousel.js -->
-    <section class="bg-gray-background overflow-hidden mb-10 vue-carousel">
+    <section class="mx-3 sm:px-0 border-b border-gray-border sm:border-0 sm:bg-gray-background overflow-hidden mb-10 vue-carousel">
       <div class="max-w-7xl m-auto my-10" v-scope="Carousel({ removePaddingBottom: true })">
         <h2 class="text-center text-4xl font-bold">
           Voordelen van Hometaste
@@ -446,7 +446,7 @@
           </div>
         
           <ul
-            class="mx-4 lg:mx-16 my-8 mt-8 flex justify-between overflow-auto scroll-smooth snap-x snap-mandatory sm:snap-none"
+            class="mx-4 lg:mx-16 my-8 md:w-[200em] mt-8 flex justify-between overflow-auto scroll-smooth snap-x snap-mandatory sm:snap-none"
           
             @mounted="mounted($el)"
             @unmounted="unmounted"
@@ -550,7 +550,7 @@
           </div>
         </div>
 
-        <div :class="numberOfDots && '!opacity-100'" class="opacity-0 mt-5 flex justify-center flex-row-reverse h-5">
+        <div :class="numberOfDots > 1 && '!opacity-100'" class="opacity-0 mt-5 flex justify-center flex-row-reverse h-5">
           <div v-for="(num, index) in numberOfDots" class="px-3">
             <span
               class="w-5 h-5 rounded-full bg-gray-border inline-block cursor-pointer"
@@ -563,49 +563,66 @@
       </div>
     </section>
 
-    <div class="max-w-7xl m-auto">
+    <!-- carousel.js -->
+    <section class="overflow-hidden mb-10 vue-carousel">
+      <div class="max-w-7xl m-auto" v-scope="Carousel({ removePaddingBottom: true })">
+        <h2 class="text-center text-4xl font-bold">
+          Hoe werkt Hometaste
+        </h2>
+        <div class="flex items-start h-[20em] overflow-hidden">
+          <ul
+            class="mx-4 lg:mx-16 my-8 mt-8 md:w-[200em] flex justify-between overflow-auto scroll-smooth snap-x snap-mandatory sm:snap-none"
+          
+            @mounted="mounted($el)"
+            @unmounted="unmounted"
+          >
+            <li class="shrink-0 px-7 w-full sm:w-auto snap-start sm:snap-align-none">
+              <img class="m-auto h-36" src="assets/landing-page/tasteful-experience.svg" width="224" height="36">
+              
+              <h2 class="text-center font-bold text-lg mt-1">
+                1. Een smaakvolle beleving
+              </h2>
+              <p class="text-center mt-2 md:60 sm:w-80 m-auto">
+                Van local tot fine dining. Laat je 24/7 inspireren en ontdek nieuwe gerechten die door restaurants worden gedeeld bij jou in de buurt.
+              </p>
+            </li>
+            <li class="shrink-0 px-7 w-full sm:w-auto snap-start sm:snap-align-none">
+              <img class="m-auto h-36" src="assets/landing-page/choose-your-restaurant.svg" width="158" height="136">
+  
+              <h2 class="text-center font-bold text-lg mt-1">
+                2. Chefkok aan huis
+              </h2>
+              <p class="text-center mt-2 md:60 sm:w-80 m-auto">
+                Heerlijk thuis uit eten terwijl je eten wordt bereid door gecertificeerde chef-koks. Bekijk de beschikbaarheid. 
+              </p>
+            </li>
+            <li class="shrink-0 px-7 w-full sm:w-auto snap-start sm:snap-align-none">
+              <img class="m-auto h-36" src="assets/icons/motorcycle.svg" width="150" height="150">
+  
+              <h2 class="text-center font-bold text-lg mt-1">
+                3. Fine dining
+              </h2>
+              <p class="text-center mt-2 md:60 sm:w-80 m-auto">
+                Culinair genieten en je gangen diner laten bezorgen aan huis. Wij garanderen de kwaliteit door enkel voor korte afstanden te bezorgen.
+              </p>
+            </li>
+          </ul>
+        </div>
 
-      <h2 class="text-center text-4xl font-bold">
-        Hoe werkt Hometaste
-      </h2>
-      <section class="mx-4 lg:mx-16 my-8 mt-8 grid grid-cols-3">
-        <div class="flex justify-center items-center">
-          <img class="m-auto" src="assets/landing-page/tasteful-experience.svg" width="224" height="36">
+        <div :class="numberOfDots > 1 && '!opacity-100'" class="opacity-0 mt-5 flex md:hidden justify-center flex-row-reverse h-5">
+          <div v-for="(num, index) in numberOfDots" class="px-3">
+            <span
+              class="w-5 h-5 rounded-full bg-gray-border inline-block cursor-pointer"
+              :class="activeOne === index && '!bg-primary'"
+
+              @click="goTo(index)"
+            ></span>
+          </div>
         </div>
-        <div class="flex justify-center items-center">
-          <img class="m-auto" src="assets/landing-page/choose-your-restaurant.svg" width="158" height="136">
-        </div>
-        <div class="flex justify-center items-center">
-          <img class="m-auto" src="assets/icons/motorcycle.svg" width="150" height="150">
-        </div>
-  
-  
-        <div>
-          <h2 class="text-center font-bold text-lg mt-1">
-            1. Locatie invoeren
-          </h2>
-          <p class="text-center mt-2">
-            Voer je straatnaam/postcode + huisnr. <br>of laat ons je positie bepalen
-          </p>
-        </div>
-        <div>
-          <h2 class="text-center font-bold text-lg mt-1">
-            2. Kies je restaurant en gerecht
-          </h2>
-          <p class="text-center mt-2 md:60 lg:w-80 m-auto">
-            Weet je nog niet waar je zin in hebt? Laat je dan inspireren en ontdek nieuwe gerechten die door restaurants zijn gedeeld bij jou in de buurt!
-          </p>
-        </div>
-        <div>
-          <h2 class="text-center font-bold text-lg mt-1">
-            3. Betaal en laat je eten bezorgen
-          </h2>
-          <p class="text-center mt-2 md:60 lg:w-80 m-auto">
-            Rond je bestelling af zonder te hoeven inloggen en betaal contant, online met IDEAL of Creditcard. Eet smakelijk!
-          </p>
-        </div>
-      </section>
-  
+      </div>
+    </section>
+    
+    <div class="max-w-7xl m-auto">
       <section class="mx-3 border-t border-gray-border py-8 flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-10">
         <div class="group relative">
           <img src="assets/landing-page/footer-img-1.png" width="auto" height="335">
