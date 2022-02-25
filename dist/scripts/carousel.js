@@ -14,78 +14,95 @@
 
         v-scope="Carousel({ count: 0 })"
         @mounted="mounted($el)"
+        @unmounted="unmounted"
       >
 
     For smooth scrollng: Add: class="scroll-smooth"
   */
 
-  function Carousel(props) {
-    return {
-      count: props.count,
-      showRightHandle: true,
-      showLeftHandle: true,
-      
-      mounted($el) {
-        this.el = $el;
-
-        if (props.removePaddingBottom) {
-          requestAnimationFrame(() => this.removePaddingBottom());
-          setTimeout(() => this.removePaddingBottom(), 100);
-          window.addEventListener("resize", this.removePaddingBottom, {passive: true});
-        }
-        this.toggleHandles();
-        
-        this.saveWidth();
-        window.addEventListener("scroll", this.saveWidth, {passive: true});
-      },
-      unmounted() {
-        window.removeEventListener("scroll", this.saveWidth);
-
-        if (props.removePaddingBottom) {
-          window.removeEventListener("resize", this.removePaddingBottom);
-        }
-
-        if (this.requestId) cancelAnimationFrame(this.requestId);
-      },
-
-      removePaddingBottom() {
-        if (!this.el) return;
-        this.el.style.paddingBottom = this.el.offsetHeight - this.el.clientHeight + "px";
-      },
-      saveWidth() {
-        if (this.el) {
-          this.width = this.el.clientWidth;
-        }
-      },
-
-      right() {
-        this.el.scrollLeft = this.el.scrollLeft + this.width;
-      },
-      left() {
-        this.el.scrollLeft = this.el.scrollLeft - this.width;
-      },
-      toggleHandles() {
-        const checkHandles = () => {
-          if (this.el.scrollLeft === 0) {
-            this.showLeftHandle = false;
-          } else {
-            this.showLeftHandle = true;
-          }
+  document.querySelectorAll(".vue-carousel").forEach(el => {
+    createApp({
+      Carousel(props) {
+        return {
+          count: props.count,
+          showRightHandle: true,
+          showLeftHandle: true,
+          numberOfDots: 0,
+          activeOne: null,
           
-          if ((this.el.scrollLeft + this.el.clientWidth) === this.el.scrollWidth) {
-            this.showRightHandle = false;
-          } else {
-            this.showRightHandle = true;
-          }
-
-          this.requestId = requestAnimationFrame(checkHandles);
-        };
-        
-        this.requestId = requestAnimationFrame(checkHandles);
-      },
-    }
-  }
-
-  createApp({ Carousel }).mount();
+          mounted($el) {
+            this.el = $el;
+      
+            if (props.removePaddingBottom) {
+              this.removePaddingBottom();
+              window.addEventListener("resize", this.removePaddingBottom, {passive: true});
+            }
+            this.toggleHandles();
+            this.calculateNumberOfDots;
+            
+            this.saveWidth();
+            window.addEventListener("scroll", this.saveWidth, {passive: true});
+          },
+          unmounted() {
+            window.removeEventListener("scroll", this.saveWidth);
+      
+            if (props.removePaddingBottom) {
+              window.removeEventListener("resize", this.removePaddingBottom);
+            }
+      
+            if (this.requestId) clearInterval(this.requestId);
+          },
+      
+          calculateNumberOfDots() {
+            this.numberOfDots = Math.floor(this.el.scrollWidth / this.el.clientWidth);
+          },
+          calculateIsActive() {
+            this.activeOne = Math.floor(this.el.scrollLeft / this.el.clientWidth);
+          },
+          removePaddingBottom() {
+            if (!this.el) return;
+            this.el.style.paddingBottom = this.el.offsetHeight - this.el.clientHeight + "px";
+          },
+          saveWidth() {
+            if (this.el) {
+              this.width = this.el.clientWidth;
+            }
+          },
+          goTo(index) {
+            this.el.scrollLeft = this.el.clientWidth * index;
+          },
+      
+          right() {
+            this.el.scrollLeft = this.el.scrollLeft + this.width;
+          },
+          left() {
+            this.el.scrollLeft = this.el.scrollLeft - this.width;
+          },
+          toggleHandles() {
+            const checkHandles = () => {
+              this.calculateNumberOfDots();
+              this.calculateIsActive();
+              
+              if (this.el.scrollLeft === 0) {
+                this.showLeftHandle = false;
+              } else {
+                this.showLeftHandle = true;
+              }
+              
+              if ((this.el.scrollLeft + this.el.clientWidth) >= this.el.scrollWidth) {
+                this.showRightHandle = false;
+              } else {
+                this.showRightHandle = true;
+              }
+      
+              this.requestId = setInterval(checkHandles, 100);
+            };
+            
+            this.requestId = setInterval(checkHandles, 100);
+          },
+        }
+      }
+    }).mount(el);
+  });
 
 }));
