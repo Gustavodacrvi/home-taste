@@ -69,7 +69,11 @@
             }
           },
           goTo(index) {
-            this.el.scrollLeft = this.el.clientWidth * index;
+            if (index === 0) {
+              this.el.scrollLeft = 0;
+            } else {
+              this.el.scrollLeft = (this.el.clientWidth * index) + 40;
+            }
           },
       
           right() {
