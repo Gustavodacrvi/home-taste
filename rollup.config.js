@@ -1,7 +1,10 @@
 
+import { terser } from "rollup-plugin-terser"
+
 export default [
   {
     input: 'src/main.js',
+    plugins: [terser()],
     output: [
       {
         file: 'dist/bundle.js',
@@ -11,6 +14,7 @@ export default [
   },
   {
     input: 'src/scripts/carousel.js',
+    plugins: [terser()],
     output: [
       {
         file: 'dist/scripts/carousel.js',
@@ -19,23 +23,3 @@ export default [
     ]
   },
 ]
-
-
-/* 
-  export default [
-    {
-      input: "src/main.js",
-      output: {
-        file: 'dist/bundle.js',
-        format: "asm"
-      },
-    },
-    {
-      input: "src/scripts/carousel.js",
-      output: {
-        file: 'dist/scripts/carousel.js',
-        format: "asm"
-      },
-    },
-  ]
- */

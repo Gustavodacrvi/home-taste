@@ -95,10 +95,10 @@ document.querySelectorAll(".vue-carousel").forEach(el => {
               this.showRightHandle = true
             }
     
-            this.requestId = setInterval(checkHandles, 100)
+            this.requestId = setInterval(checkHandles, 500)
           }
           
-          this.requestId = setInterval(checkHandles, 100)
+          this.requestId = setInterval(checkHandles, 500)
         },
       }
     }

@@ -1,11 +1,1 @@
-(function (factory) {
-	typeof define === 'function' && define.amd ? define(factory) :
-	factory();
-})((function () { 'use strict';
-
-	const { createApp } = PetiteVue;
-
-	createApp().mount("nav");
-	createApp().mount("footer");
-
-}));
+!function(e){"function"==typeof define&&define.amd?define(e):e()}((function(){"use strict";const{createApp:e}=PetiteVue;e().mount("nav"),e().mount("footer")}));

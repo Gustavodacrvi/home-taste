@@ -12,6 +12,7 @@
     "build": "npm run copy_and_paste & npm run build:rollup & npm run build:css"
   },
   "dependencies": {
-    "postcss-cli": "^9.1.0"
+    "postcss-cli": "^9.1.0",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }

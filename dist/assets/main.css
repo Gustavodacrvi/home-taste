@@ -1057,9 +1057,9 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-right: 1.25rem;
   }
 
-  .sm\:px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .sm\:px-\[1\.4em\] {
+    padding-left: 1.4em;
+    padding-right: 1.4em;
   }
 
   .sm\:px-0 {
