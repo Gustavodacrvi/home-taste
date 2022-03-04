@@ -229,324 +229,389 @@
         <div class="space-y-14">
           <div class="space-y-10">
             <section v-scope="FiltersForm({ selected: 0, param: 'sort-by' })">
-              <h2 class="font-bold">
-                Sorteren op
-              </h2>
-      
-              <ul class="space-y-5 mt-4">
-                <li class="flex items-start group cursor-pointer" @click="selectOption(0)">
-                  <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
-                    <span :class="selected === 0 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+              <div v-scope="TransitionConstructor({ property: 'height' })">
+                <h2 class="font-bold flex justify-between items-center">
+                  Sorteren op
+
+                  <span class="cursor-pointer duration-150 inline-block" :class="showing ? 'rotate-0' : 'rotate-90'" @click="showing = !showing">
+                    <img src="assets/icons//arrow-primary-color.svg">
                   </span>
-                  
-                  <span class="mt-0.5">Aanbevolen</span>
-                </li>
-                <li class="flex items-start group cursor-pointer" @click="selectOption(1)">
-                  <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
-                    <span :class="selected === 1 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
-                  </span>
-                  
-                  <span class="mt-0.5">Bezorgtijd</span>
-                </li>
-                <li class="flex items-start group cursor-pointer" @click="selectOption(2)">
-                  <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
-                    <span :class="selected === 2 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
-                  </span>
-                  
-                  <span class="mt-0.5">Bezorgkosten</span>
-                </li>
-                <li class="flex items-start group cursor-pointer" @click="selectOption(3)">
-                  <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
-                    <span :class="selected === 3 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
-                  </span>
-                  
-                  <span class="mt-0.5">Alfabetisch</span>
-                </li>
-              </ul>
+                </h2>
+        
+                <div v-if="showing"
+                  class="overflow-hidden"
+                
+                  @mounted="mounted($el)"
+                  @unmounted="unmounted"
+                >
+                  <ul class="space-y-5 mt-4">
+                    <li class="flex items-start group cursor-pointer" @click="selectOption(0)">
+                      <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
+                        <span :class="selected === 0 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                      </span>
+                      
+                      <span class="mt-0.5">Aanbevolen</span>
+                    </li>
+                    <li class="flex items-start group cursor-pointer" @click="selectOption(1)">
+                      <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
+                        <span :class="selected === 1 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                      </span>
+                      
+                      <span class="mt-0.5">Bezorgtijd</span>
+                    </li>
+                    <li class="flex items-start group cursor-pointer" @click="selectOption(2)">
+                      <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
+                        <span :class="selected === 2 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                      </span>
+                      
+                      <span class="mt-0.5">Bezorgkosten</span>
+                    </li>
+                    <li class="flex items-start group cursor-pointer" @click="selectOption(3)">
+                      <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
+                        <span :class="selected === 3 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                      </span>
+                      
+                      <span class="mt-0.5">Alfabetisch</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </section>
             <section v-scope="FiltersForm({ selected: 0, param: 'price' })">
-              <h2 class="font-bold">
-                Max. bezorgkosten
-              </h2>
-      
-              <ul class="space-y-5 mt-4">
-                <li class="flex items-start group cursor-pointer" @click="selectOption(0)">
-                  <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
-                    <span :class="selected === 0 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
-                  </span>
+              <div v-scope="TransitionConstructor({ property: 'height' })">
+                <h2 class="font-bold flex justify-between items-center">
+                  Max. bezorgkosten
                   
-                  <span class="mt-0.5">Alles</span>
-                </li>
-                <li class="flex items-start group cursor-pointer" @click="selectOption(1)">
-                  <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
-                    <span :class="selected === 1 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                  <span class="cursor-pointer duration-150 inline-block" :class="showing ? 'rotate-0' : 'rotate-90'" @click="showing = !showing">
+                    <img src="assets/icons//arrow-primary-color.svg">
                   </span>
-                  
-                  <span class="mt-0.5 font-bold">Gratis</span>
-                </li>
-                <li class="flex items-start group cursor-pointer" @click="selectOption(2)">
-                  <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
-                    <span :class="selected === 2 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
-                  </span>
-                  
-                  <span class="mt-0.5">€ 0,50 - 2,50</span>
-                </li>
-                <li class="flex items-start group cursor-pointer" @click="selectOption(3)">
-                  <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
-                    <span :class="selected === 3 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
-                  </span>
-                  
-                  <span class="mt-0.5">€ 2,50 - 5,00</span>
-                </li>
-              </ul>
+                </h2>
+        
+                <div v-if="showing"
+                  class="overflow-hidden"
+                
+                  @mounted="mounted($el)"
+                  @unmounted="unmounted"
+                >
+                  <ul class="space-y-5 mt-4">
+                    <li class="flex items-start group cursor-pointer" @click="selectOption(0)">
+                      <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
+                        <span :class="selected === 0 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                      </span>
+                      
+                      <span class="mt-0.5">Alles</span>
+                    </li>
+                    <li class="flex items-start group cursor-pointer" @click="selectOption(1)">
+                      <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
+                        <span :class="selected === 1 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                      </span>
+                      
+                      <span class="mt-0.5 font-bold">Gratis</span>
+                    </li>
+                    <li class="flex items-start group cursor-pointer" @click="selectOption(2)">
+                      <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
+                        <span :class="selected === 2 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                      </span>
+                      
+                      <span class="mt-0.5">€ 0,50 - 2,50</span>
+                    </li>
+                    <li class="flex items-start group cursor-pointer" @click="selectOption(3)">
+                      <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
+                        <span :class="selected === 3 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                      </span>
+                      
+                      <span class="mt-0.5">€ 2,50 - 5,00</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </section>
             <section v-scope="FiltersForm({ selected: 0, param: 'min-order-ammount' })">
-              <h2 class="font-bold">
-                Min. bestelbedrag
-              </h2>
-      
-              <ul class="space-y-5 mt-4">
-                <li class="flex items-start group cursor-pointer" @click="selectOption(0)">
-                  <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
-                    <span :class="selected === 0 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+              <div v-scope="TransitionConstructor({ property: 'height' })">
+                <h2 class="font-bold flex justify-between items-center">
+                  Min. bestelbedrag
+
+                  <span class="cursor-pointer duration-150 inline-block" :class="showing ? 'rotate-0' : 'rotate-90'" @click="showing = !showing">
+                    <img src="assets/icons//arrow-primary-color.svg">
                   </span>
-                  
-                  <span class="mt-0.5">Alles</span>
-                </li>
-                <li class="flex items-start group cursor-pointer" @click="selectOption(1)">
-                  <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
-                    <span :class="selected === 1 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
-                  </span>
-                  
-                  <span class="mt-0.5 font-bold">€ 10 of minder</span>
-                </li>
-                <li class="flex items-start group cursor-pointer" @click="selectOption(2)">
-                  <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
-                    <span :class="selected === 2 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
-                  </span>
-                  
-                  <span class="mt-0.5">€ 15 of minder</span>
-                </li>
-              </ul>
+                </h2>
+        
+                <div v-if="showing"
+                  class="overflow-hidden"
+                
+                  @mounted="mounted($el)"
+                  @unmounted="unmounted"
+                >
+                  <ul class="space-y-5 mt-4">
+                    <li class="flex items-start group cursor-pointer" @click="selectOption(0)">
+                      <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
+                        <span :class="selected === 0 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                      </span>
+                      
+                      <span class="mt-0.5">Alles</span>
+                    </li>
+                    <li class="flex items-start group cursor-pointer" @click="selectOption(1)">
+                      <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
+                        <span :class="selected === 1 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                      </span>
+                      
+                      <span class="mt-0.5 font-bold">€ 10 of minder</span>
+                    </li>
+                    <li class="flex items-start group cursor-pointer" @click="selectOption(2)">
+                      <span class="w-8 h-8 rounded-full border-[3px] border-dark-gray relative mr-2">
+                        <span :class="selected === 2 ? '!opacity-100' : '!opacity-0 group-hover:!opacity-25'" class="duration-150 opacity-0 group-hover:!opacity-100 w-4 h-4 rounded-full bg-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></span>
+                      </span>
+                      
+                      <span class="mt-0.5">€ 15 of minder</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </section>
             <section v-scope="FiltersForm({ selected: 0, param: 'stars' })">
-              <h2 class="font-bold">
-                Beoordelingen
-              </h2>
-      
-              <ul class="space-x-1 mt-4 flex">
-                <span
-                  class="text-gray cursor-pointer scale-100 hover:scale-110 active:scale-100 duration-150"
-                  :class="selected >= 1 ? '!text-primary' : ''"
-                 
-                  @click="selected === 1 ? removeOption() : selectOption(1)"
+              <div v-scope="TransitionConstructor({ property: 'height' })">
+                <h2 class="font-bold flex justify-between items-center">
+                  Beoordelingen
+
+                  <span class="cursor-pointer duration-150 inline-block" :class="showing ? 'rotate-0' : 'rotate-90'" @click="showing = !showing">
+                    <img src="assets/icons//arrow-primary-color.svg">
+                  </span>
+                </h2>
+        
+                <div v-if="showing"
+                  class="overflow-hidden"
+                
+                  @mounted="mounted($el)"
+                  @unmounted="unmounted"
                 >
-                  <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.64384 24.1297C5.04072 24.4391 4.35634 23.8969 4.47822 23.2047L5.77509 15.8141L0.270406 10.5703C-0.243657 10.0797 0.0235307 9.1828 0.712593 9.08593L8.36572 7.99843L11.7782 1.23749C12.086 0.628113 12.9188 0.628113 13.2267 1.23749L16.6392 7.99843L24.2923 9.08593C24.9813 9.1828 25.2485 10.0797 24.7329 10.5703L19.2298 15.8141L20.5267 23.2047C20.6485 23.8969 19.9642 24.4391 19.361 24.1297L12.5001 20.6047L5.64228 24.1297H5.64384Z" fill="currentColor"/>
-                  </svg>
-                </span>
-                <span
-                  class="text-gray cursor-pointer scale-100 hover:scale-110 active:scale-100 duration-150"
-                  :class="selected >= 2 ? '!text-primary' : ''"
-                 
-                  @click="selected === 2 ? removeOption() : selectOption(2)"
-                >
-                  <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.64384 24.1297C5.04072 24.4391 4.35634 23.8969 4.47822 23.2047L5.77509 15.8141L0.270406 10.5703C-0.243657 10.0797 0.0235307 9.1828 0.712593 9.08593L8.36572 7.99843L11.7782 1.23749C12.086 0.628113 12.9188 0.628113 13.2267 1.23749L16.6392 7.99843L24.2923 9.08593C24.9813 9.1828 25.2485 10.0797 24.7329 10.5703L19.2298 15.8141L20.5267 23.2047C20.6485 23.8969 19.9642 24.4391 19.361 24.1297L12.5001 20.6047L5.64228 24.1297H5.64384Z" fill="currentColor"/>
-                  </svg>
-                </span>
-                <span
-                  class="text-gray cursor-pointer scale-100 hover:scale-110 active:scale-100 duration-150"
-                  :class="selected >= 3 ? '!text-primary' : ''"
-                 
-                  @click="selected === 3 ? removeOption() : selectOption(3)"
-                >
-                  <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.64384 24.1297C5.04072 24.4391 4.35634 23.8969 4.47822 23.2047L5.77509 15.8141L0.270406 10.5703C-0.243657 10.0797 0.0235307 9.1828 0.712593 9.08593L8.36572 7.99843L11.7782 1.23749C12.086 0.628113 12.9188 0.628113 13.2267 1.23749L16.6392 7.99843L24.2923 9.08593C24.9813 9.1828 25.2485 10.0797 24.7329 10.5703L19.2298 15.8141L20.5267 23.2047C20.6485 23.8969 19.9642 24.4391 19.361 24.1297L12.5001 20.6047L5.64228 24.1297H5.64384Z" fill="currentColor"/>
-                  </svg>
-                </span>
-                <span
-                  class="text-gray cursor-pointer scale-100 hover:scale-110 active:scale-100 duration-150"
-                  :class="selected >= 4 ? '!text-primary' : ''"
-                 
-                  @click="selected === 4 ? removeOption() : selectOption(4)"
-                >
-                  <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.64384 24.1297C5.04072 24.4391 4.35634 23.8969 4.47822 23.2047L5.77509 15.8141L0.270406 10.5703C-0.243657 10.0797 0.0235307 9.1828 0.712593 9.08593L8.36572 7.99843L11.7782 1.23749C12.086 0.628113 12.9188 0.628113 13.2267 1.23749L16.6392 7.99843L24.2923 9.08593C24.9813 9.1828 25.2485 10.0797 24.7329 10.5703L19.2298 15.8141L20.5267 23.2047C20.6485 23.8969 19.9642 24.4391 19.361 24.1297L12.5001 20.6047L5.64228 24.1297H5.64384Z" fill="currentColor"/>
-                  </svg>
-                </span>
-                <span
-                  class="text-gray cursor-pointer scale-100 hover:scale-110 active:scale-100 duration-150"
-                  :class="selected >= 5 ? '!text-primary' : ''"
-                 
-                  @click="selected === 5 ? removeOption() : selectOption(5)"
-                >
-                  <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.64384 24.1297C5.04072 24.4391 4.35634 23.8969 4.47822 23.2047L5.77509 15.8141L0.270406 10.5703C-0.243657 10.0797 0.0235307 9.1828 0.712593 9.08593L8.36572 7.99843L11.7782 1.23749C12.086 0.628113 12.9188 0.628113 13.2267 1.23749L16.6392 7.99843L24.2923 9.08593C24.9813 9.1828 25.2485 10.0797 24.7329 10.5703L19.2298 15.8141L20.5267 23.2047C20.6485 23.8969 19.9642 24.4391 19.361 24.1297L12.5001 20.6047L5.64228 24.1297H5.64384Z" fill="currentColor"/>
-                  </svg>
-                </span>
-              </ul>
+                  <ul class="space-x-1 mt-4 flex">
+                    <span
+                      class="text-gray cursor-pointer scale-100 hover:scale-110 active:scale-100 duration-150"
+                      :class="selected >= 1 ? '!text-primary' : ''"
+                    
+                      @click="selected === 1 ? removeOption() : selectOption(1)"
+                    >
+                      <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.64384 24.1297C5.04072 24.4391 4.35634 23.8969 4.47822 23.2047L5.77509 15.8141L0.270406 10.5703C-0.243657 10.0797 0.0235307 9.1828 0.712593 9.08593L8.36572 7.99843L11.7782 1.23749C12.086 0.628113 12.9188 0.628113 13.2267 1.23749L16.6392 7.99843L24.2923 9.08593C24.9813 9.1828 25.2485 10.0797 24.7329 10.5703L19.2298 15.8141L20.5267 23.2047C20.6485 23.8969 19.9642 24.4391 19.361 24.1297L12.5001 20.6047L5.64228 24.1297H5.64384Z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <span
+                      class="text-gray cursor-pointer scale-100 hover:scale-110 active:scale-100 duration-150"
+                      :class="selected >= 2 ? '!text-primary' : ''"
+                    
+                      @click="selected === 2 ? removeOption() : selectOption(2)"
+                    >
+                      <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.64384 24.1297C5.04072 24.4391 4.35634 23.8969 4.47822 23.2047L5.77509 15.8141L0.270406 10.5703C-0.243657 10.0797 0.0235307 9.1828 0.712593 9.08593L8.36572 7.99843L11.7782 1.23749C12.086 0.628113 12.9188 0.628113 13.2267 1.23749L16.6392 7.99843L24.2923 9.08593C24.9813 9.1828 25.2485 10.0797 24.7329 10.5703L19.2298 15.8141L20.5267 23.2047C20.6485 23.8969 19.9642 24.4391 19.361 24.1297L12.5001 20.6047L5.64228 24.1297H5.64384Z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <span
+                      class="text-gray cursor-pointer scale-100 hover:scale-110 active:scale-100 duration-150"
+                      :class="selected >= 3 ? '!text-primary' : ''"
+                    
+                      @click="selected === 3 ? removeOption() : selectOption(3)"
+                    >
+                      <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.64384 24.1297C5.04072 24.4391 4.35634 23.8969 4.47822 23.2047L5.77509 15.8141L0.270406 10.5703C-0.243657 10.0797 0.0235307 9.1828 0.712593 9.08593L8.36572 7.99843L11.7782 1.23749C12.086 0.628113 12.9188 0.628113 13.2267 1.23749L16.6392 7.99843L24.2923 9.08593C24.9813 9.1828 25.2485 10.0797 24.7329 10.5703L19.2298 15.8141L20.5267 23.2047C20.6485 23.8969 19.9642 24.4391 19.361 24.1297L12.5001 20.6047L5.64228 24.1297H5.64384Z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <span
+                      class="text-gray cursor-pointer scale-100 hover:scale-110 active:scale-100 duration-150"
+                      :class="selected >= 4 ? '!text-primary' : ''"
+                    
+                      @click="selected === 4 ? removeOption() : selectOption(4)"
+                    >
+                      <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.64384 24.1297C5.04072 24.4391 4.35634 23.8969 4.47822 23.2047L5.77509 15.8141L0.270406 10.5703C-0.243657 10.0797 0.0235307 9.1828 0.712593 9.08593L8.36572 7.99843L11.7782 1.23749C12.086 0.628113 12.9188 0.628113 13.2267 1.23749L16.6392 7.99843L24.2923 9.08593C24.9813 9.1828 25.2485 10.0797 24.7329 10.5703L19.2298 15.8141L20.5267 23.2047C20.6485 23.8969 19.9642 24.4391 19.361 24.1297L12.5001 20.6047L5.64228 24.1297H5.64384Z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <span
+                      class="text-gray cursor-pointer scale-100 hover:scale-110 active:scale-100 duration-150"
+                      :class="selected >= 5 ? '!text-primary' : ''"
+                    
+                      @click="selected === 5 ? removeOption() : selectOption(5)"
+                    >
+                      <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.64384 24.1297C5.04072 24.4391 4.35634 23.8969 4.47822 23.2047L5.77509 15.8141L0.270406 10.5703C-0.243657 10.0797 0.0235307 9.1828 0.712593 9.08593L8.36572 7.99843L11.7782 1.23749C12.086 0.628113 12.9188 0.628113 13.2267 1.23749L16.6392 7.99843L24.2923 9.08593C24.9813 9.1828 25.2485 10.0797 24.7329 10.5703L19.2298 15.8141L20.5267 23.2047C20.6485 23.8969 19.9642 24.4391 19.361 24.1297L12.5001 20.6047L5.64228 24.1297H5.64384Z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                  </ul>
+                </div>
+              </div>
             </section>
           </div>
           <div>
             <section v-scope="FiltersForm({ selected: [], param: 'categories', multipleSelections: true })">
-              <h2 class="font-bold">
-                Categorien  
-              </h2>
-    
-              <ul class="space-y-4 mt-4">
-                <li 
-                  class="flex space-x-3 cursor-pointer"
-                  
-                  @click="selectOption('0')"
+              <div v-scope="TransitionConstructor({ property: 'height' })">
+                <h2 class="font-bold flex justify-between items-center">
+                  Categorien
+
+                  <span class="cursor-pointer duration-150 inline-block" :class="showing ? 'rotate-0' : 'rotate-90'" @click="showing = !showing">
+                    <img src="assets/icons//arrow-primary-color.svg">
+                  </span>
+                </h2>
+      
+                <div v-if="showing"
+                  class="overflow-hidden"
+                
+                  @mounted="mounted($el)"
+                  @unmounted="unmounted"
                 >
-                  <span :class="selected.includes('0') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                  
-                  <span class="mt-0.5">
-                    Fine Dining
-                  </span>
-                </li>
-                <li 
-                  class="flex space-x-3 cursor-pointer"
-                  
-                  @click="selectOption('1')"
-                >
-                  <span :class="selected.includes('1') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                  
-                  <span class="mt-0.5">
-                    Asian
-                  </span>
-                </li>
-                <li 
-                  class="flex space-x-3 cursor-pointer"
-                  
-                  @click="selectOption('2')"
-                >
-                  <span :class="selected.includes('2') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                  
-                  <span class="mt-0.5">
-                    Sushi
-                  </span>
-                </li>
-                <li 
-                  class="flex space-x-3 cursor-pointer"
-                  
-                  @click="selectOption('3')"
-                >
-                  <span :class="selected.includes('3') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                  
-                  <span class="mt-0.5">
-                    Barbeque
-                  </span>
-                </li>
-                <li 
-                  class="flex space-x-3 cursor-pointer"
-                  
-                  @click="selectOption('4')"
-                >
-                  <span :class="selected.includes('4') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                  
-                  <span class="mt-0.5">
-                    Hamburgers
-                  </span>
-                </li>
-                <li 
-                  class="flex space-x-3 cursor-pointer"
-                  
-                  @click="selectOption('5')"
-                >
-                  <span :class="selected.includes('5') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                  
-                  <span class="mt-0.5">
-                    Italiaans
-                  </span>
-                </li>
-                <li 
-                  class="flex space-x-3 cursor-pointer"
-                  
-                  @click="selectOption('6')"
-                >
-                  <span :class="selected.includes('6') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                  
-                  <span class="mt-0.5">
-                    Pizza
-                  </span>
-                </li>
-                <li 
-                  class="flex space-x-3 cursor-pointer"
-                  
-                  @click="selectOption('7')"
-                >
-                  <span :class="selected.includes('7') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                  
-                  <span class="mt-0.5">
-                    Vegetarisch
-                  </span>
-                </li>
-                <li 
-                  class="flex space-x-3 cursor-pointer"
-                  
-                  @click="selectOption('8')"
-                >
-                  <span :class="selected.includes('8') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                  
-                  <span class="mt-0.5">
-                    Chefkok
-    
-                  </span>
-                </li>
-                <li 
-                  class="flex space-x-3 cursor-pointer"
-                  
-                  @click="selectOption('9')"
-                >
-                  <span :class="selected.includes('9') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </span>
-                  
-                  <span class="mt-0.5">
-                    Mood
-                  </span>
-                </li>
-              </ul>
+                  <ul class="space-y-4 mt-4">
+                    <li 
+                      class="flex space-x-3 cursor-pointer"
+                      
+                      @click="selectOption('0')"
+                    >
+                      <span :class="selected.includes('0') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                      
+                      <span class="mt-0.5">
+                        Fine Dining
+                      </span>
+                    </li>
+                    <li 
+                      class="flex space-x-3 cursor-pointer"
+                      
+                      @click="selectOption('1')"
+                    >
+                      <span :class="selected.includes('1') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                      
+                      <span class="mt-0.5">
+                        Asian
+                      </span>
+                    </li>
+                    <li 
+                      class="flex space-x-3 cursor-pointer"
+                      
+                      @click="selectOption('2')"
+                    >
+                      <span :class="selected.includes('2') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                      
+                      <span class="mt-0.5">
+                        Sushi
+                      </span>
+                    </li>
+                    <li 
+                      class="flex space-x-3 cursor-pointer"
+                      
+                      @click="selectOption('3')"
+                    >
+                      <span :class="selected.includes('3') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                      
+                      <span class="mt-0.5">
+                        Barbeque
+                      </span>
+                    </li>
+                    <li 
+                      class="flex space-x-3 cursor-pointer"
+                      
+                      @click="selectOption('4')"
+                    >
+                      <span :class="selected.includes('4') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                      
+                      <span class="mt-0.5">
+                        Hamburgers
+                      </span>
+                    </li>
+                    <li 
+                      class="flex space-x-3 cursor-pointer"
+                      
+                      @click="selectOption('5')"
+                    >
+                      <span :class="selected.includes('5') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                      
+                      <span class="mt-0.5">
+                        Italiaans
+                      </span>
+                    </li>
+                    <li 
+                      class="flex space-x-3 cursor-pointer"
+                      
+                      @click="selectOption('6')"
+                    >
+                      <span :class="selected.includes('6') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                      
+                      <span class="mt-0.5">
+                        Pizza
+                      </span>
+                    </li>
+                    <li 
+                      class="flex space-x-3 cursor-pointer"
+                      
+                      @click="selectOption('7')"
+                    >
+                      <span :class="selected.includes('7') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                      
+                      <span class="mt-0.5">
+                        Vegetarisch
+                      </span>
+                    </li>
+                    <li 
+                      class="flex space-x-3 cursor-pointer"
+                      
+                      @click="selectOption('8')"
+                    >
+                      <span :class="selected.includes('8') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                      
+                      <span class="mt-0.5">
+                        Chefkok
+        
+                      </span>
+                    </li>
+                    <li 
+                      class="flex space-x-3 cursor-pointer"
+                      
+                      @click="selectOption('9')"
+                    >
+                      <span :class="selected.includes('9') && '!bg-primary !border-primary'" class="border-[3px] duration-150 hover:border-gray-border hover:bg-gray-border border-dark-gray rounded w-8 h-8 flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="white">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                      
+                      <span class="mt-0.5">
+                        Mood
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </section>
           </div>
           <div>
@@ -1127,6 +1192,7 @@
   <script src="https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.iife.js"></script>
   <script src="scripts/carousel.js"></script>
   <script src="scripts/sidebar.js"></script>
+  <script src="scripts/hideShowTransition.js"></script>
   
   <script src="create-vue-components.js"></script>
 </body>
