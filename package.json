@@ -7,7 +7,7 @@
   "scripts": {
     "dev:css": "npx tailwindcss -i ./src/assets/main.css -o ./dist/assets/main.css --watch",
     "build:css": "postcss src/assets/main.css -o dist/assets/main.css",
-    "copy_and_paste": "rm -rf dist & mkdir dist & cp src/index.html dist/index.html & cp -r src/assets dist/assets",
+    "copy_and_paste": "rm -rf dist & mkdir dist & cp src/index.html dist/index.html & cp src/andina.html dist/andina.html & cp -r src/assets dist/assets",
     "build:rollup": "rollup --config",
     "build": "npm run copy_and_paste & npm run build:rollup & npm run build:css"
   },
