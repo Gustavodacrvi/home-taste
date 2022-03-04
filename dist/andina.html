@@ -188,29 +188,30 @@
       </div>
     </nav>
 
-    <div class="px-3.5 flex sm:hidden w-full">
+    <div class="px-3.5 flex sm:hidden w-full relative">
       <input
-        class="bg-white rounded-2xl p-3 sm:p-4 md:p-5 w-full text-lg !pr-24 !pl-14 border-box border border-gray-border"
-        placeholder="Straatnaam/postcode + huisnr."
+        class="bg-white rounded-xl p-4 md:p-5 w-full font-bold text-xl !pl-14 border-box border border-gray-border"
+        placeholder="Zoeken naar Restaurants"
       >
 
-      <img class="absolute top-1/2 -translate-y-1/2 ml-3" width="32" height="32" src="assets/icons/location.svg">
-      <button class="flex justify-center items-center ml-3 rounded-2xl font-bold bg-green text-white text-xl px-6 right-0" @click="showFilters = !showFilters">
+      <img class="absolute top-1/2 -translate-y-1/2 ml-3" width="26" height="26" src="assets/icons/search.svg">
+      <button class="flex justify-center items-center ml-3 rounded-xl font-bold bg-green text-white text-xl px-6 right-0" @click="showFilters = !showFilters">
         <img src="assets/icons/filter.svg" class="mr-2">
         Filter
       </button>
     </div>
   
-    <main class="mx-3 xl:mx-auto max-w-8xl lg:flex items-start my-8">
+    <main class="mx-3 2xl:mx-auto max-w-8xl lg:flex items-start my-4 lg:my-8">
       <!-- sidebar.js -->
       <aside
         :class="!showFilters ? '-translate-x-full' : 'translate-x-0'"
-        class="text-lg shrink-0 lg:w-72 -translate-x-full duration-150 overflow-auto h-full lg:h-auto lg:translate-x-0 sidebar-filters bg-white fixed left-0 top-0 p-4 pr-16 w-auto lg:p-0 lg:relative z-50"
+        class="text-lg shrink-0 lg:w-72 -translate-x-full duration-150 overflow-auto lg:overflow-visible h-full lg:h-auto lg:translate-x-0 sidebar-filters bg-white fixed left-0 top-0 p-4 pr-16 w-auto lg:!p-0 lg:relative z-50 lg:z-10"
       >
+        <img class="absolute right-0 opacity-10 lg:hidden sidebar-lunch-background mt-14" width="700" height="578" src="assets/icons/sidebar-background.png">
         <img class="absolute right-0 cursor-pointer mr-4 lg:hidden" width="20" height="20" src="assets/icons/close.svg" @click="showFilters= false">
       
         <div class="shrink-0 w-72 flex items-center mb-8">
-          <img class="h-[6.25em] w-auto" src="assets/icons/lunch.svg" width="auto" height="60">
+          <img class="h-[6.25em] w-auto -ml-3" src="assets/icons/lunch.svg" width="auto" height="60">
     
           <div class="ml-8 whitespace-nowrap text-base">
             <h1 class="text-2xl font-bold text-primary">
@@ -782,7 +783,7 @@
           </div>
         </div>
         
-        <ul class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-8">
+        <ul class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-5 lg:mt-8">
           <li class="rounded-xl border border-gray-border duration-150 mt-0 hover:-mt-1 overflow-hidden cursor-pointer group">
             <div class="overflow-hidden rounded-t">
               <img src="assets/landing-page/image_2.png" class="w-full h-[14rem] duration-150 scale-1 group-hover:scale-105 rounded-t-xl object-cover" height="187" width="310">
